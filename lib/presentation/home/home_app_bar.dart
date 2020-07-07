@@ -49,7 +49,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   Visibility _options(HomeAppBarViewModel vm) {
     return Visibility(
-        visible: vm.memberOfChannel,
+        visible: vm.memberOfChannel == null ? false : vm.memberOfChannel,
         child: Material(
           color: Colors.transparent,
           child: InkWell(
@@ -78,7 +78,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Text(
-            vm.title,
+            vm.title == null ? "Title" : vm.title,
             style: AppTheme.channelTitle,
             overflow: TextOverflow.ellipsis,
             maxLines: 1,

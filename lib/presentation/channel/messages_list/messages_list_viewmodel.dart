@@ -16,6 +16,7 @@ abstract class MessagesListViewModel
 
   BuiltList<Message> get messages;
 
+  @nullable
   bool get userIsMember;
 
   BuiltMap<String, User> get authors;
@@ -32,7 +33,6 @@ abstract class MessagesListViewModel
       ..currentUser = store.state.user?.toBuilder()
       ..authors = MapBuilder(
           store.state.groupUsers.asMap().map((k, v) => MapEntry(v.uid, v)))
-      ..userIsMember = getSelectedChannel(store.state)?.users
-              ?.any((u) => u.id == store.state.user.uid));
+      ..userIsMember = true);
   }
 }

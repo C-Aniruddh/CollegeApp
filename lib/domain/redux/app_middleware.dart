@@ -29,7 +29,7 @@ List<Middleware<AppState>> createStoreMiddleware(
 void Function(Store<AppState> store, SelectGroup action, NextDispatcher next)
     _selectGroup() {
   return (store, action, next) {
-    next(action);
+
 
     // We're no longer loading all channels of all groups initially
     // (but just for the group selected).
@@ -44,6 +44,7 @@ void Function(Store<AppState> store, SelectGroup action, NextDispatcher next)
     store.dispatch(LoadChannels(
       action.groupId,
     ));
+    next(action);
   };
 }
 

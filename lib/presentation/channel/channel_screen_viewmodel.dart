@@ -36,13 +36,12 @@ abstract class ChannelScreenViewModel
     final channelUser = selectedChannel
         ?.users
         ?.firstWhere((u) => u.id == store.state.user.uid, orElse: () => null);
-
     return ChannelScreenViewModel((v) => v
       ..isAuthor =
-          selectedChannel.authorId == store.state.user.uid
+          selectedChannel?.authorId == store.state.user.uid
       ..userIsMember = hasSelectedChannel && channelUser != null
       ..groupId = hasSelectedChannel ? store.state.selectedGroupId : ""
-      ..channel = selectedChannel.toBuilder()
+      ..channel = selectedChannel?.toBuilder()
       ..user = store.state.user.toBuilder()
       ..failedToJoin = store.state.channelState.joinChannelFailed
       ..rsvpStatus = channelUser?.rsvp ?? RSVP.UNSET);

@@ -19,6 +19,7 @@ abstract class HomeAppBarViewModel
 
   bool get hasUpdatedChannelsInGroup;
 
+  @nullable
   String get title;
 
   bool get memberOfChannel;
@@ -36,30 +37,30 @@ abstract class HomeAppBarViewModel
           channels.any((c) => (c != channel) && c.hasUpdates);
 
       final isMemberOfChannel =
-          channel.users.any((u) => u.id == store.state.user.uid);
+          channel?.users?.any((u) => u.id == store.state.user.uid);
 
       return HomeAppBarViewModel((vm) {
         return vm
-          ..title = channel.name
+          ..title = channel?.name
           ..memberOfChannel = isMemberOfChannel
           ..hasUpdatedChannelsInGroup = hasGroupUpdates
-          ..isEvent = channel.type == ChannelType.EVENT
+          ..isEvent = channel?.type == ChannelType.EVENT
           ..eventDate = _formatDate(context, channel);
       });
     };
   }
 
   static String _formatDate(context, Channel channel) {
-    if (channel.startDate == null) {
+    if (channel?.startDate == null) {
       return "";
     }
     try {
-      if (channel.hasStartTime) {
-        return "${formatDate(context, channel.startDate)} "
+      if (channel?.hasStartTime) {
+        return "${formatDate(context, channel?.startDate)} "
             "${CirclesLocalizations.of(context).at} "
-            "${formatTime(context, channel.startDate)}";
+            "${formatTime(context, channel?.startDate)}";
       } else {
-        return formatDate(context, channel.startDate);
+        return formatDate(context, channel?.startDate);
       }
     } catch (error) {
       return "";

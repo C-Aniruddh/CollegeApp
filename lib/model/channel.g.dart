@@ -131,7 +131,7 @@ class ChannelBuilder implements Builder<Channel, ChannelBuilder> {
   String get id => _$this._id;
   set id(String id) => _$this._id = id;
 
-  String _name;
+  String _name = "Name";
   String get name => _$this._name;
   set name(String name) => _$this._name = name;
 
@@ -139,7 +139,7 @@ class ChannelBuilder implements Builder<Channel, ChannelBuilder> {
   String get description => _$this._description;
   set description(String description) => _$this._description = description;
 
-  ChannelVisibility _visibility;
+  ChannelVisibility _visibility = ChannelVisibility.CLOSED;
   ChannelVisibility get visibility => _$this._visibility;
   set visibility(ChannelVisibility visibility) =>
       _$this._visibility = visibility;
@@ -157,7 +157,7 @@ class ChannelBuilder implements Builder<Channel, ChannelBuilder> {
   bool get hasUpdates => _$this._hasUpdates;
   set hasUpdates(bool hasUpdates) => _$this._hasUpdates = hasUpdates;
 
-  ChannelType _type;
+  ChannelType _type = ChannelType.TOPIC;
   ChannelType get type => _$this._type;
   set type(ChannelType type) => _$this._type = type;
 

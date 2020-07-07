@@ -224,21 +224,19 @@ Channel _pickChannelToSelect(
   Channel channel;
 
   // Select the previously selected channel (if still exists)
-  final channelId =
-      store.state.uiState.groupUiState[action.groupId]?.lastSelectedChannel;
-  if (channelId != null) {
-    channel = channels.firstWhere((c) => c.id == channelId, orElse: null);
-  }
+  //final channelId =
+  //    store.state.uiState.groupUiState[action.groupId]?.lastSelectedChannel;
+
+  //if (channelId != null) {
+    //channel = channels.firstWhere((c) => c.id == channelId, orElse: null);
+  //}
 
   // If no previously selected channel for a group
-  if (channel == null) {
-    // Select a default OPEN channel if there are channels available
-    channel = _defaultChannel(channels);
-  }
+  channel = _defaultChannel(channels, store);
   return channel;
 }
 
-Channel _defaultChannel(List<Channel> channels) =>
+Channel _defaultChannel(List<Channel> channels, Store<AppState> store) =>
     channels.firstWhere((c) => c.visibility == ChannelVisibility.OPEN);
 
 bool _isChannelInList(List<Channel> channels, Channel channel) {
@@ -324,7 +322,8 @@ void Function(
   return (store, action, next) async {
     try {
       // Event has passed
-      if (getSelectedChannel(store.state).startDate.isBefore(DateTime.now())) {
+      // ignore: null_aware_in_condition
+      if (getSelectedChannel(store.state)?.startDate?.isBefore(DateTime.now())) {
         throw Exception(
             "RSVP after event passed ${getSelectedChannel(store.state).startDate} vs. now: ${DateTime.now()}");
       }

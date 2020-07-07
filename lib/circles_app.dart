@@ -131,6 +131,7 @@ class _CirclesAppState extends State<CirclesApp> {
     return StoreProvider(
       store: store,
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         localizationsDelegates: localizationsDelegates,
         supportedLocales: [
           const Locale("de", "DE"),

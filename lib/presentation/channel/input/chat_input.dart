@@ -3,6 +3,7 @@ import "package:circles_app/domain/redux/app_state.dart";
 import "package:circles_app/domain/redux/ui/ui_actions.dart";
 import "package:circles_app/presentation/channel/input/attach_button.dart";
 import "package:circles_app/presentation/channel/input/chat_input_viewmodel.dart";
+import 'package:circles_app/presentation/channel/input/lecture_button.dart';
 import "package:circles_app/presentation/channel/input/send_button.dart";
 import "package:circles_app/theme.dart";
 import "package:flutter/material.dart";

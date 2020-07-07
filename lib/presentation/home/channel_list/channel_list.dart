@@ -5,6 +5,7 @@ import "package:circles_app/presentation/home/channel_list/channel_list_item.dar
 import "package:circles_app/presentation/home/channel_list/channel_list_viewmodel.dart";
 import "package:circles_app/presentation/home/channel_list/event_status_icon_widget.dart";
 import "package:circles_app/presentation/home/channel_list/group_status_icon_widget.dart";
+import "package:circles_app/data/user_repository.dart";
 import "package:circles_app/theme.dart";
 import "package:flutter/material.dart";
 import "package:flutter_redux/flutter_redux.dart";
@@ -66,6 +67,7 @@ class _ChannelListActionItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final provider = StoreProvider.of<AppState>(context);
     return Padding(
         padding: EdgeInsets.only(top: DrawerStyle.doublePadding),
         child: Row(children: <Widget>[

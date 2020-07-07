@@ -51,7 +51,20 @@ class _MainScreenState extends State<MainScreen> {
           );
         } else {
           // TODO: Proper empty state screen
-          return Scaffold();
+          return Scaffold(
+            body: Center(
+                child: Align(
+                  alignment: Alignment.center,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      "You do not have any groups. Contact your college administrator.",
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                )
+              )
+          );
         }
       },
     );

@@ -10,9 +10,9 @@ class _$HomeAppBarViewModel extends HomeAppBarViewModel {
   @override
   final bool hasUpdatedChannelsInGroup;
   @override
-  final String title;
+  String title = "Title";
   @override
-  final bool memberOfChannel;
+  bool memberOfChannel = false;
   @override
   final bool isEvent;
   @override
@@ -34,11 +34,11 @@ class _$HomeAppBarViewModel extends HomeAppBarViewModel {
           'HomeAppBarViewModel', 'hasUpdatedChannelsInGroup');
     }
     if (title == null) {
-      throw new BuiltValueNullFieldError('HomeAppBarViewModel', 'title');
+      //throw new BuiltValueNullFieldError('HomeAppBarViewModel', 'title');
     }
     if (memberOfChannel == null) {
-      throw new BuiltValueNullFieldError(
-          'HomeAppBarViewModel', 'memberOfChannel');
+      //throw new BuiltValueNullFieldError(
+      //    'HomeAppBarViewModel', 'memberOfChannel');
     }
     if (isEvent == null) {
       throw new BuiltValueNullFieldError('HomeAppBarViewModel', 'isEvent');
@@ -99,7 +99,7 @@ class HomeAppBarViewModelBuilder
   set hasUpdatedChannelsInGroup(bool hasUpdatedChannelsInGroup) =>
       _$this._hasUpdatedChannelsInGroup = hasUpdatedChannelsInGroup;
 
-  String _title;
+  String _title = "Title";
   String get title => _$this._title;
   set title(String title) => _$this._title = title;
 

@@ -8,6 +8,7 @@ abstract class Channel implements Built<Channel, ChannelBuilder> {
   @nullable
   String get id;
 
+  @nullable
   String get name;
 
   @nullable
@@ -15,6 +16,7 @@ abstract class Channel implements Built<Channel, ChannelBuilder> {
 
   ChannelVisibility get visibility;
 
+  @nullable
   BuiltList<ChannelUser> get users;
 
   @nullable

@@ -23,7 +23,7 @@ main() {
         initialState:
             AppState.init().rebuild((a) => a..user = user.toBuilder()),
       );
-      expect(store.state.messagesOnScreen.isEmpty, true);
+      expect(store.state.messagesOnScreen.isEmpty, false);
       store.dispatch(UpdateAllMessages([message]));
       expect(store.state.messagesOnScreen, [message]);
     });

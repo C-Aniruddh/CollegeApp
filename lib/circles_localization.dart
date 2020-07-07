@@ -44,7 +44,7 @@ class CirclesLocalizations {
       "channel_create_button": "Create",
       "channel_input_hint": "Message",
       "channel_input_send": "Send",
-      "channel_title": "Topics",
+      "channel_title": "Subjects",
       "channel_list_pending": "UNJOINED",
       "channel_list_joined": "JOINED",
       "channel_list_previous": "PREVIOUS",

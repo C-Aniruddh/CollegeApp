@@ -1,5 +1,6 @@
 import "package:circles_app/domain/redux/app_actions.dart";
 import "package:circles_app/domain/redux/app_state.dart";
+import 'package:circles_app/domain/redux/channel/channel_actions.dart';
 import "package:circles_app/model/group.dart";
 import "package:circles_app/presentation/common/platform_alerts.dart";
 import "package:circles_app/presentation/home/circles_drawer.dart";
@@ -61,10 +62,6 @@ class _GroupListState extends State<GroupList> {
         child: Column(
           children: <Widget>[
             _Style.defaultPadding,
-            _GroupSettingsButton(
-                Image.asset("assets/graphics/drawer/create_topic.png"), () {
-              showSoonAlert(context: context);
-            }),
           ],
         ));
   }
@@ -187,6 +184,7 @@ class _GroupListItem extends StatelessWidget {
           child: _GroupButton(
             _group,
             (id) {
+              Navigator.pop(context);
               _selectionCallback();
               _selectGroup(context, id);
             },
