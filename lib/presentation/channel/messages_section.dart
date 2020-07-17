@@ -1,9 +1,13 @@
+import 'package:agora_rtc_engine/agora_rtc_engine.dart';
 import "package:circles_app/presentation/channel/messages_list/messages_list.dart";
 import "package:circles_app/presentation/channel/messages_scroll_controller.dart";
+import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
+import 'package:circles_app/presentation/channel/videocall/videocall_screen.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class MessagesSection extends StatefulWidget {
-  const MessagesSection({Key key}): super(key: key);
+  const MessagesSection({Key key,}) : super(key: key);
 
   @override
   _MessagesSectionState createState() => _MessagesSectionState();
@@ -36,6 +40,14 @@ class _MessagesSectionState extends State<MessagesSection>
     scrollController.addListener(_onScroll);
   }
 
+  Future<void> _handleCameraAndMic() async {
+    await PermissionHandler().requestPermissions(
+      [PermissionGroup.camera, PermissionGroup.microphone],
+    );
+  }
+
+  final ClientRole _role = ClientRole.Broadcaster;
+
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -49,7 +61,32 @@ class _MessagesSectionState extends State<MessagesSection>
             SlideTransition(
               position: _fabPosition,
               child: _createFloatingActionButton(),
-            )
+            ),
+            Positioned(
+              top: 0.0,
+              child: Container(
+                color: Colors.white,
+                width: MediaQuery.of(context).size.width,
+                height: 50.0,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    FlatButton(
+                        onPressed: () async {
+                          await _handleCameraAndMic();
+                          await Navigator.push(
+                              context,
+                              CupertinoPageRoute(
+                                  builder: (context) => CallPage(
+                                        channelName: "channel",
+                                        role: _role,
+                                      )));
+                        },
+                        child: Text("Start Lecture"))
+                  ],
+                ),
+              ),
+            ),
           ],
         ),
       ),
@@ -95,4 +132,3 @@ class _MessagesSectionState extends State<MessagesSection>
     );
   }
 }
-
